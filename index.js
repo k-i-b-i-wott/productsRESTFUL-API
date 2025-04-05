@@ -1,9 +1,11 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import validateProducts from "./middleware/validateProducts.js";
 
 const app = express();
 const client = new PrismaClient();
 app.use(express.json());
+
 
 app.get("/products",async (_req, res) => {
   try {
@@ -82,7 +84,7 @@ app.get("/offer", async (_req,res)=> {
 
 
 
-app.post("/products", async (req, res) => {
+app.post("/products", validateProducts, async (req, res) => {
   const { productTitle, productDescription, unitsLeft, pricePerUnit } =
     req.body;
   try {
