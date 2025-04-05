@@ -1,7 +1,7 @@
 import express from "express";
 // import { PrismaClient } from "@prisma/client";
 
-import {productsRouters, productsOnOffer} from "./routes/productsRouters.js";
+import { productsRouters, productsOnOffer } from "./routes/productsRouters.js";
 
 const app = express();
 // const client = new PrismaClient();
@@ -21,6 +21,7 @@ app.use("/offer", productsOnOffer);
 
 // app.delete("/products/:productId",
 // );
+
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => {
